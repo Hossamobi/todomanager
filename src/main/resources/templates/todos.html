@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo-Liste</title>
+</head>
+<body>
+<h1>Meine Todos</h1>
+
+<ul>
+    <li th:each="todo : ${todos}">
+        <span th:text="${todo.description}"></span>
+        <span th:if="${todo.isDone}">✓ erledigt</span>
+        <span th:if="${!todo.isDone}">✗ offen</span>
+
+        <form th:action="@{/todo/done}" method="post" style="display:inline;">
+            <input type="hidden" name="id" th:value="${todo.id}" />
+            <button type="submit" th:if="${!todo.isDone}">✓ Erledigt</button>
+        </form>
+    </li>
+</ul>
+
+<!-- Hier beginnt das Formular -->
+<hr />
+<h2>Neues Todo hinzufügen</h2>
+
+<form action="/todo/save" method="post">
+    <input type="text" name="description" placeholder="Beschreibung" required />
+    <input type="hidden" name="isDone" value="false" />
+    <input type="number" name="userId" th:value="${userId}" readonly />
+    <button type="submit">Speichern</button>
+</form>
+</body>
+</html>

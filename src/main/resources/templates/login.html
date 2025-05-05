@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Login</title></head>
+<body>
+<h1>Login</h1>
+
+<form action="/login" method="post">
+  <input type="email" name="email" placeholder="E-Mail" required /><br />
+  <input type="password" name="password" placeholder="Passwort" required /><br />
+  <button type="submit">Anmelden</button>
+</form>
+
+<p><a href="/register">Noch kein Konto?</a></p>
+</body>
+</html>
